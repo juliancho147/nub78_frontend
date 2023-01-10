@@ -1,4 +1,4 @@
-<form #form="ngForm"  (ngSubmit)="submit(form)" novalidate>
+<form #form="ngForm" (ngSubmit)="submit(form)" novalidate>
   <div class="contenedor">
     <ul class="titulo">
       <li>
@@ -18,13 +18,24 @@
           <label for=""
             >{{ tecnico.nombre }}
             <br />
-            <input type="text" value="{{ tecnico.nombre }}" name="nombre" ngModel required #first="ngModel"
+            <input
+              type="text"
+              value="{{ tecnico.nombre }}"
+              name="nombre"
+              ngModel
+              required
+              #first="ngModel"
           /></label>
         </div>
         <div>
           <label
             >{{ tecnico.sueldo }} <br />
-            <input type="text" value="{{ tecnico.sueldo }}" name="sueldo" ngModel />
+            <input
+              type="text"
+              value="{{ tecnico.sueldo }}"
+              name="sueldo"
+              ngModel
+            />
           </label>
         </div>
         <div>
