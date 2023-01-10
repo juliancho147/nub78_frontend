@@ -12,7 +12,17 @@
     <ul>
       <li>
         <div>
-          <label>{{ tecnico.id }}</label>
+          <label>{{ tecnico.id }}
+            <br>
+            <input
+              type="text"
+              value="{{ tecnico.id }}"
+              name="id"
+              ngModel
+              required
+              #first="ngModel"
+          />
+          </label>
         </div>
         <div>
           <label for=""

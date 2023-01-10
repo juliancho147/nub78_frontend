@@ -18,12 +18,22 @@ export class TecnicoService {
     let body = {
       "tecnico": {
         "id": id
-
       }
     }
     const formHeaders = new HttpHeaders()
       .append('Content-Type', 'application/json');
     return this.http.post<Elementoxtecnico[]>("http://localhost:5001/get_elementos",body,{
+      headers:formHeaders
+    })
+  }
+  updateTecnico(tecnico:any):Observable<String>{
+    let body = {
+      "tecnico": tecnico
+    }
+    console.log(body)
+    const formHeaders = new HttpHeaders()
+    .append('Content-Type', 'application/json');
+    return this.http.put<String>("http://localhost:5001/update_tecnico",{tecnico},{
       headers:formHeaders
     })
   }

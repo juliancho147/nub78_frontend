@@ -6,7 +6,9 @@ import { Elementoxtecnico } from '../models/elemento/elementoxtecnico';
 import { SucursalService } from '../shared/sucursal/sucursal.service';
 import { Sucursal } from '../models/sucursal/sucursal';
 import { FormGroup, FormControl, FormArray, NgForm } from '@angular/forms'
-
+interface elemntoxpersona {
+  id: number
+}
 @Component({
   selector: 'app-view-empleado',
   templateUrl: './view-empleado.component.html',
@@ -52,6 +54,7 @@ export class ViewEmpleadoComponent {
     })
 
   }
+
   submit(event: NgForm) {
     console.log("event.target.nombre.value")
     console.log(event.value)
@@ -60,9 +63,7 @@ export class ViewEmpleadoComponent {
       "nombre": "",
       "sueldo": 0,
       "sucursal_id": "",
-      "elementos": {
-
-      }
+      "elementos": [{}]
     }
     if (event.value.nombre == '') {
       tecnico.nombre = this.tecnico.nombre
@@ -74,12 +75,38 @@ export class ViewEmpleadoComponent {
     } else {
       tecnico.sueldo = event.value.sueldo
     }
-    tecnico.sucursal_id = this.sucursal_id
-    let elementos = {}
-    this.listElementos.forEach(elemento =>{
-      let id = elemento.id
-      console.log()
+    if (event.value.id == '') {
+      tecnico.id = this.tecnico.id
+    } else {
+      tecnico.sueldo = event.value.id
+    }
+    if (this.sucursal_id == '') {
+      this.listSucursales.forEach(sucursal => {
+        if (sucursal.nombre == this.tecnico.sucursal) {
+          tecnico.sucursal_id = sucursal.id
+        }
+      })
+    } else {
+      tecnico.sucursal_id = this.sucursal_id
+    }
+
+    let elementos: any = []
+    this.listElementos.forEach(elemento => {
+      elementos.push(
+        {
+          "id": elemento.id,
+          "cantidad": elemento.cantidad
+        }
+      )
     })
+    tecnico["elementos"] = elementos;
+
+    let response;
+    this.tecnicoService.updateTecnico(tecnico).subscribe(
+      r => {
+        console.log(r)
+      }
+    );
 
   }
 
