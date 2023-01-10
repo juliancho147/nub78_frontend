@@ -1,0 +1,38 @@
+<div class="contenedor">
+  <ul class="titulo" >
+    <li>
+      <div>
+        ID
+      </div>
+      <div>
+        NOMBRE
+      </div>
+      <div>
+        SUELDO
+      </div>
+      <div>
+        SUCURSAL
+      </div>
+    </li>
+  </ul>
+  <ul *ngFor="let tecnico of listTecnicos" class="lista">
+    <li  (click)="viewTecnico(tecnico)">
+      <div>
+        {{ tecnico.id }}
+      </div>
+      <div>
+        {{tecnico.nombre}}
+      </div>
+      <div>
+        {{tecnico.sueldo}}
+      </div>
+      <div>
+        {{tecnico.sucursal}}
+      </div>
+    </li>
+  </ul>
+</div>
+<p>Trabajador seleccionado</p>
+<app-view-empleado [tecnico]="tecnico"></app-view-empleado>
+
+

@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  backend:
+    build:
+      context: ./nub78Front
+      dockerfile: Dockerfile.dev
+    ports:
+      - "62846:62486"
+    links:
+      - db
+    volumes:
+      - .:/usr/app
+volumes:
+  mysqldb:

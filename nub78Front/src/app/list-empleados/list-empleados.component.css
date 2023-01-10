@@ -1,0 +1,42 @@
+ul {
+  display: table;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 6px;
+}
+.lista:hover{
+  background-color:rgba(198, 194, 194, 0.227);
+  cursor: pointer;
+}
+li {
+  list-style: none;
+  display: table-row;
+
+}
+li div {
+  display: table-cell;
+  text-align:center;
+}
+.lista li div:hover{
+  color:rgba(252, 142, 142, 0.999);
+}
+.titulo{
+  color: rgb(158, 8, 8);
+  font-weight: bold;
+  border-bottom-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+.contenedor{
+  border-style: solid ;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 6px;
+  box-shadow: 7px 5px 5px rgba(14, 14, 14, 0.407);
+  margin-bottom: 8px;
+}

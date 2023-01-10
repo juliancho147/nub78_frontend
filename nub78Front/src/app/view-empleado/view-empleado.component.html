@@ -1,0 +1,58 @@
+<form #form="ngForm"  (ngSubmit)="submit(form)" novalidate>
+  <div class="contenedor">
+    <ul class="titulo">
+      <li>
+        <div>ID</div>
+        <div>NOMBRE</div>
+        <div>SUELDO</div>
+        <div>SUCURSAL</div>
+        <div>Elementos</div>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <div>
+          <label>{{ tecnico.id }}</label>
+        </div>
+        <div>
+          <label for=""
+            >{{ tecnico.nombre }}
+            <br />
+            <input type="text" value="{{ tecnico.nombre }}" name="nombre" ngModel required #first="ngModel"
+          /></label>
+        </div>
+        <div>
+          <label
+            >{{ tecnico.sueldo }} <br />
+            <input type="text" value="{{ tecnico.sueldo }}" name="sueldo" ngModel />
+          </label>
+        </div>
+        <div>
+          {{ tecnico.sucursal }}
+          <br />
+
+          <select #scursal (change)="selectedSucursal(scursal.value)">
+            <option default *ngFor="let sucursal of listSucursales">
+              {{ sucursal.nombre }}
+            </option>
+          </select>
+        </div>
+        <div>
+          <ul *ngFor="let elemento of listElementos">
+            <li>
+              <div>
+                {{ elemento.nombre }}
+              </div>
+              <div>
+                {{ elemento.cantidad }}
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <button>enviar</button>
+  </div>
+</form>
