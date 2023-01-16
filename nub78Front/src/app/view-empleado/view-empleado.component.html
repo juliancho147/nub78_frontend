@@ -12,8 +12,9 @@
     <ul>
       <li>
         <div>
-          <label>{{ tecnico.id }}
-            <br>
+          <label
+            >{{ tecnico.id }}
+            <br />
             <input
               type="text"
               value="{{ tecnico.id }}"
@@ -21,7 +22,7 @@
               ngModel
               required
               #first="ngModel"
-          />
+            />
           </label>
         </div>
         <div>
@@ -64,8 +65,12 @@
               <div>
                 {{ elemento.nombre }}
               </div>
-              <div>
+              <div class="numerosElementos">
                 {{ elemento.cantidad }}
+                <div class="boton" (click)="addMore(elemento.id)">+</div>
+
+                <div class="boton" (click)="takeOne(elemento.id)">-</div>
+                <div class="bontonEliminar" (click)="dropElement(elemento.id)">Eliminar</div>
               </div>
             </li>
           </ul>
@@ -74,6 +79,23 @@
     </ul>
   </div>
   <div>
-    <button>enviar</button>
+    <button class="submit">Actualizar</button>
   </div>
 </form>
+
+<div class ="elementos">
+  <ul class="titulo">
+    <li>
+      <div>Elemento</div>
+      <div>Descripcion</div>
+      <div></div>
+    </li>
+  </ul>
+  <ul *ngFor="let elemento of listaTodosLosElementos" class="lista">
+    <li>
+      <div> {{elemento.nombre}}</div>
+      <div> {{elemento.descripcion}}</div>
+      <div class="botonAgregar" (click)="agregarElemento(elemento)">  Agregar</div>
+    </li>
+  </ul>
+</div>

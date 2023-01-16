@@ -1,5 +1,5 @@
 ul {
-  display: table;
+  display:table;
   border-collapse: collapse;
   margin: 0;
   padding: 0;
@@ -32,4 +32,66 @@ li div {
   border-bottom-style: solid;
   border-color: black;
   border-width: 1px;
+}
+.boton{
+  width:20px;
+  height:20px;
+  border-style:solid;
+  border-color: black;
+  border-width:1px;
+  background-color: green;;
+  border-radius: 2px;
+  margin: 2px;
+}
+.boton:hover{
+  background-color:rgb(2, 113, 2);
+  cursor: pointer
+}
+li .numerosElementos{
+  display: flex;
+}
+.bontonEliminar{
+  height:20px;
+  border-style:solid;
+  border-color: black;
+  border-width:1px;
+  background-color: rgb(231, 19, 8);;
+  border-radius: 2px;
+  margin: 2px;
+}
+.bontonEliminar:hover{
+  background-color:rgb(254, 107, 107);
+  cursor: pointer
+}
+.botonAgregar{
+  height:20px;
+  border-width:1px;
+  background-color: rgb(34, 231, 8);;
+  border-radius: 2px;
+  margin: 2px;
+}
+.botonAgregar:hover{
+  background-color:rgb(107, 254, 107);
+  cursor: pointer
+}
+.elementos{
+  width:50%;
+  border-style: solid ;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 6px;
+  box-shadow: 7px 5px 5px rgba(14, 14, 14, 0.407);
+}
+.submit{
+  background-color: rgb(157, 157, 242);
+  border-style: none;
+  border-radius: 2px;
+  margin: 5px;
+}
+.submit:hover{
+  background-color: rgb(192, 192, 240);
+  cursor: pointer
+}
+input{
+  margin-bottom:10px ;
 }

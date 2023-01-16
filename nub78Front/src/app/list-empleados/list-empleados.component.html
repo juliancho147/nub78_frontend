@@ -13,6 +13,7 @@
       <div>
         SUCURSAL
       </div>
+      <div></div>
     </li>
   </ul>
   <ul *ngFor="let tecnico of listTecnicos" class="lista">
@@ -28,6 +29,9 @@
       </div>
       <div>
         {{tecnico.sucursal}}
+      </div>
+      <div>
+        <div class="bontonEliminar" (click)="dropElement(tecnico.id)">Eliminar</div>
       </div>
     </li>
   </ul>

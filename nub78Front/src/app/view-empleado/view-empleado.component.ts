@@ -6,6 +6,7 @@ import { Elementoxtecnico } from '../models/elemento/elementoxtecnico';
 import { SucursalService } from '../shared/sucursal/sucursal.service';
 import { Sucursal } from '../models/sucursal/sucursal';
 import { FormGroup, FormControl, FormArray, NgForm } from '@angular/forms'
+import { ElementoService } from '../shared/elemento/elemento.service';
 interface elemntoxpersona {
   id: number
 }
@@ -18,21 +19,26 @@ export class ViewEmpleadoComponent {
   @Input()
   public tecnico: Tecnico = new Tecnico("", "", "", 0);
 
-  public listElementos: Elementoxtecnico[] = []
-  public listSucursales: Sucursal[] = []
+  public listElementos: Elementoxtecnico[] = [];
+  public listSucursales: Sucursal[] = [];
+  public listaTodosLosElementos:Elemento[] = [];
 
   public id: string = "";
   public nombre: string = "";
   public sucursal_id: string = "";
   public sueldo: number = 0;
   constructor(public tecnicoService: TecnicoService,
-    public sucursalService: SucursalService) { }
+    public sucursalService: SucursalService,
+    public elementoService:ElementoService) { }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.sucursalService.getSucursales().subscribe(sucursales => {
       this.listSucursales = sucursales
+    })
+    this.elementoService.getAllElementos().subscribe(r=>{
+      this.listaTodosLosElementos =  r
     })
   }
   ngOnChanges(): void {
@@ -54,10 +60,37 @@ export class ViewEmpleadoComponent {
     })
 
   }
+  addMore(id: String) {
+    console.log(id)
+    this.listElementos.forEach(elemento => {
+      if (elemento.id == id) {
+        elemento.cantidad = elemento.cantidad + 1
+      }
+    })
+  }
+  takeOne(id: String) {
+    console.log(id)
+    this.listElementos.forEach((elemento, index) => {
+      if (elemento.id == id) {
 
+
+        if (elemento.cantidad == 1) {
+
+        } else
+          elemento.cantidad = elemento.cantidad - 1
+      }
+    })
+
+  }
+  dropElement(id: String){
+    this.tecnicoService.dropElement(this.tecnico.id,id).subscribe(
+      r =>{
+        console.log(r)
+      }
+
+    )
+  }
   submit(event: NgForm) {
-    console.log("event.target.nombre.value")
-    console.log(event.value)
     var tecnico = {
       "id": "",
       "nombre": "",
@@ -108,6 +141,20 @@ export class ViewEmpleadoComponent {
       }
     );
 
+  }
+  agregarElemento(elemento:Elemento){
+    this.elementoService.insertElementoToTecnico(this.tecnico.id,elemento.id).subscribe(
+      r => {
+        if (r = "ok"){
+          this.listElementos.push(new Elementoxtecnico(
+            1,
+            elemento.descripcion,
+            elemento.id,
+            elemento.nombre
+          ))
+        }
+      }
+    )
   }
 
 }

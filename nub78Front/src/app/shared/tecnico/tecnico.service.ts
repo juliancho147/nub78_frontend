@@ -38,4 +38,29 @@ export class TecnicoService {
     })
   }
 
+  dropElement(id:String,elemento_id:String):Observable<String>{
+    let body = {
+      "tecnico": {
+        "id":id,
+        "elemento_id":elemento_id
+      }
+    }
+    const formHeaders = new HttpHeaders()
+    .append('Content-Type', 'application/json');
+    return this.http.delete<String>("http://localhost:5001/drop_element",{
+      body:body
+    })
+  }
+  deleteTecnico(id:String):Observable<String>{
+    let body = {
+      "tecnico": {
+        "id":id
+      }
+    }
+    const formHeaders = new HttpHeaders()
+    .append('Content-Type', 'application/json');
+    return this.http.delete<String>("http://localhost:5001/delete_tecnico",{
+      body:body
+    })
+  }
 }

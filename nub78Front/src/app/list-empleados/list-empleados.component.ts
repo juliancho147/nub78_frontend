@@ -25,4 +25,12 @@ export class ListEmpleadosComponent {
     viewTecnico(tecnico:Tecnico){
       this.tecnico = tecnico
     }
+    dropElement(id: String){
+      this.tecnicoService.deleteTecnico(this.tecnico.id).subscribe(
+        r =>{
+          console.log(r)
+        }
+
+      )
+    }
 }

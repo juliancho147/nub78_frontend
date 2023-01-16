@@ -40,3 +40,10 @@ li div {
   box-shadow: 7px 5px 5px rgba(14, 14, 14, 0.407);
   margin-bottom: 8px;
 }
+.bontonEliminar{
+  height:20px;
+  border-width:1px;
+  background-color: rgb(231, 19, 8);;
+  border-radius: 2px;
+  margin: 2px;
+}
